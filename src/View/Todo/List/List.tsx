@@ -1,25 +1,33 @@
 import React from "react";
 import Item from "./Item/Item";
 import PubSub from "pubsub-js";
-import {TOPIC_CHANGE_ITEM} from "../../../config/Constant";
+import {TOPIC_CHANGE_ITEM, TOPIC_ITEM_EVENT} from "../../../config/Constant";
 import TodoEvent, {TodoEventType} from "../Form/TodoEvent";
 import TodoDTO from "./TodoDTO";
+import {renderIf} from "../../../Utils/Supports";
+import ItemEvent, {ItemEventType} from "./Item/ItemEvent";
+
+import './List.css'
 
 let ID = 0;
 
 class List extends React.Component {
 	tokenChangeItem: any;
+	tokenItemEvent: any;
 
 	state = {
-		list: []
+		list: [],
+		blur: false
 	}
 
 	componentDidMount() {
 		this.tokenChangeItem = PubSub.subscribe(TOPIC_CHANGE_ITEM, this.onChangeItem);
+		this.tokenItemEvent = PubSub.subscribe(TOPIC_ITEM_EVENT, this.onItemEvent);
 	}
 
 	componentWillUnmount() {
 		PubSub.unsubscribe(this.tokenChangeItem);
+		PubSub.unsubscribe(this.tokenItemEvent);
 	}
 
 	onChangeItem = (topic: string, event: TodoEvent) => {
@@ -47,11 +55,21 @@ class List extends React.Component {
 						break;
 					}
 				}
-				this.setState({list: list2})
-
-
+				this.setState({list: list2, blur: false})
 				break;
 
+		}
+	}
+
+	onItemEvent = (topic: string, event: ItemEvent) => {
+		switch (event.type) {
+			case ItemEventType.FORCUS:
+				this.setState({blur: true})
+				break;
+
+			case ItemEventType.BLUR:
+				this.setState({blur: false})
+				break;
 		}
 	}
 
@@ -62,12 +80,17 @@ class List extends React.Component {
 	}
 
 	render() {
-		const {list} = this.state;
+		const {list, blur} = this.state;
 
 		return (
-			<div>
-				{list.map(this.renderItem)}
-			</div>
+			<>
+				{renderIf(blur)(
+					<div className="background"/>
+				)}
+				<div>
+					{list.map(this.renderItem)}
+				</div>
+			</>
 		);
 	}
 }
