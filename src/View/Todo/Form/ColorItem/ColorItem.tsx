@@ -33,6 +33,7 @@ class ColorItem extends React.Component<any> {
 	onSelect = () => {
 		this.setState({selected: !this.state.selected});
 		let event: ColorItemEvent = {
+			todoId: this.props.todoId,
 			color: this.props.color
 		}
 

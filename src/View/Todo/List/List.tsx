@@ -75,7 +75,7 @@ class List extends React.Component {
 
 	renderItem(todo: any) {
 		return (
-			<Item todo={todo}/>
+			<Item key={todo.id} todo={todo}/>
 		);
 	}
 

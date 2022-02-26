@@ -3,34 +3,15 @@ import './TodoForm.css'
 import ColorItem from "./ColorItem/ColorItem";
 import {renderIf} from "../../../Utils/Supports";
 import PubSub from "pubsub-js";
-import {TOPIC_CHANGE_ITEM, TOPIC_COLOR_CHANGE, TOPIC_ITEM_EVENT} from "../../../config/Constant";
+import {
+	COLORS,
+	COLORS_DEFAULT,
+	TOPIC_CHANGE_ITEM,
+	TOPIC_COLOR_CHANGE,
+	TOPIC_ITEM_EVENT
+} from "../../../config/Constant";
 import ColorItemEvent from "./ColorItem/ColorItemEvent";
 import TodoEvent, {TodoEventType} from "./TodoEvent";
-
-const COLORS_DEFAULT = "#1790FF"
-
-const COLORS = [
-	"#FF1717",
-	"#FF5C00",
-	"#FF9900",
-	"#E1CB02",
-	"#7EE100",
-	"#00E14D",
-	"#00E1E1",
-	"#1790FF",
-	"#0029FF",
-	"#7000FF",
-	"#BE0072",
-	"#BE0022",
-	"#690003",
-	"#634100",
-	"#0E6300",
-	"#002863",
-	"#3D0063",
-	"#292929",
-	"#5C5C5C",
-	"#939393",
-]
 
 class TodoForm extends React.Component {
 	tokenColorChange: any;
@@ -52,6 +33,9 @@ class TodoForm extends React.Component {
 	}
 
 	onColorChange = (topic: string, event: ColorItemEvent) => {
+		if (!!event.todoId)
+			return;
+
 		this.setState({color: event.color})
 	}
 	onItemEvent = () => {
@@ -87,7 +71,7 @@ class TodoForm extends React.Component {
 
 	renderColor = (color: any) => {
 		return (
-			<ColorItem color={color}/>
+			<ColorItem key={color} color={color}/>
 		);
 	}
 
