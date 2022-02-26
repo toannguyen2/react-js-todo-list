@@ -1,5 +1,5 @@
 export default interface TodoDTO {
-	id: number;
-	text: string;
-	color: string;
+	id?: number;
+	text?: string;
+	color?: string;
 }

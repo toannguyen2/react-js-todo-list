@@ -38,6 +38,18 @@ class List extends React.Component {
 				break;
 
 			case TodoEventType.REMOVE:
+				let id = event.id;
+				let list2 = this.state.list;
+				for (let i = 0; i < list2.length; i++) {
+					// @ts-ignore
+					if (list2[i].id === id) {
+						list2.splice(i, 1);
+						break;
+					}
+				}
+				this.setState({list: list2})
+
+
 				break;
 
 		}

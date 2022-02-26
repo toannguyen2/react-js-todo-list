@@ -1,10 +1,22 @@
 import React from "react";
 import "./Item.css"
+import TodoEvent, {TodoEventType} from "../../Form/TodoEvent";
+import PubSub from "pubsub-js";
+import {TOPIC_CHANGE_ITEM} from "../../../../config/Constant";
 
 class Item extends React.Component<any> {
 
 	constructor(props: any) {
 		super(props);
+	}
+
+	onRemove = () => {
+		let todoEvent: TodoEvent = {
+			id: this.props.todo.id,
+			type: TodoEventType.REMOVE
+		}
+
+		PubSub.publish(TOPIC_CHANGE_ITEM, todoEvent);
 	}
 
 	render() {
@@ -21,7 +33,7 @@ class Item extends React.Component<any> {
 							fill="white"/>
 					</svg>
 				</div>
-				<div className="btn">
+				<div className="btn" onClick={this.onRemove}>
 					<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<rect width="21.1945" height="3.97398" rx="1.98699"
 							  transform="matrix(-0.713079 0.701084 -0.713079 -0.701084 17.9471 2.78609)" fill="white"/>

@@ -5,7 +5,8 @@ export enum TodoEventType {
 }
 
 export default interface TodoEvent {
-	text: string;
-	color: string;
+	id?: number;
+	text?: string;
+	color?: string;
 	type: TodoEventType;
 }
