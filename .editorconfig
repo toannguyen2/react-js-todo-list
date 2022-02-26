@@ -1,0 +1,38 @@
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+tab_width = 4
+indent_size = 4
+indent_style = tab
+insert_final_newline = true
+trim_trailing_whitespace = true
+max_line_length = 120
+ij_continuation_indent_size = 4
+ij_formatter_tags_enabled = true
+ij_smart_tabs = false
+ij_visual_guides = 120
+ij_wrap_on_typing = true
+
+# [{spring.schemas, spring.handlers, *.properties}]
+# charset = latin1
+# max_line_length = 999
+
+# [*.{yml, yaml, xml, puml, md, svg}]
+# max_line_length = 999
+# tab_width = 2
+# indent_size = 2
+# ij_continuation_indent_size = 2
+
+# [*.{json, json5}]
+# tab_width = 4
+# indent_size = 4
+# ij_continuation_indent_size = 4
+
+# [*.{gradle, gradle.kts}]
+# max_line_length = 999
+#
+# [*.{cmd, bat}]
+# end_of_line = crlf
+# max_line_length = 999

@@ -1,0 +1,9 @@
+#background {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background: linear-gradient(112.4deg, #44BCFF 10%, #FA1DF1 230.1%), linear-gradient(112.4deg, #44BCFF 0%, rgba(250, 29, 241, 0) 130.13%);
+	z-index: -1;
+}

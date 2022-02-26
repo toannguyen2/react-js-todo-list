@@ -1,0 +1,23 @@
+#todo_container {
+	margin: 73px auto 0;
+	width: 453px;
+	min-height: 241px;
+	background: #FFFFFF;
+	border-radius: 15px;
+	box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075) !important;
+	padding-bottom: 15px;
+}
+
+.todo_title {
+	padding: 15px;
+	text-align: center;
+}
+
+.todo_title h1.title {
+	margin: 0;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 24px;
+	line-height: 28px;
+	color: #000000;
+}

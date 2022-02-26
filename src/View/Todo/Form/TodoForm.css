@@ -1,0 +1,64 @@
+.todo_form {
+	display: flex;
+	width: 415px;
+	margin: 0 auto;
+	background: #00A3FF;
+	border-radius: 5px;
+}
+
+.todo_form > .container_input {
+	display: flex;
+	padding: 2px 0 2px 2px;
+	width: calc(100% - 45px);
+}
+
+.todo_form > .container_input > .box {
+	display: flex;
+	width: 100%;
+	background: #FFFFFF;
+	border-radius: 5px;
+}
+
+.todo_form > .container_input > .box > input {
+	border: none;
+	background: transparent;
+	padding-left: 10px;
+	width: calc(100% - 41px);
+}
+
+.todo_form > .container_input > .box .color_btn {
+	position: relative;
+	height: 41px;
+	width: 41px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	font-weight: bold;
+	color: #fff;
+}
+
+.todo_form > .container_input > .box > .color_btn > .color-container {
+	position: absolute;
+	width: 274px;
+	height: 60px;
+	background: #FFFFFF;
+	border-radius: 7px;
+	box-shadow: 0 0 0.5rem rgb(0 0 0 / 8%) !important;
+	top: 36px;
+	display: inline-flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+}
+
+.todo_form > .todo_btn_add {
+	height: 45px;
+	width: 45px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	font-weight: bold;
+	color: #fff;
+}
