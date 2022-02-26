@@ -3,7 +3,7 @@ import './TodoForm.css'
 import ColorItem from "./ColorItem/ColorItem";
 import {renderIf} from "../../../Utils/Supports";
 import PubSub from "pubsub-js";
-import {TOPIC_CHANGE_ITEM, TOPIC_COLOR_CHANGE} from "../../../config/Constant";
+import {TOPIC_CHANGE_ITEM, TOPIC_COLOR_CHANGE, TOPIC_ITEM_EVENT} from "../../../config/Constant";
 import ColorItemEvent from "./ColorItem/ColorItemEvent";
 import TodoEvent, {TodoEventType} from "./TodoEvent";
 
@@ -33,7 +33,8 @@ const COLORS = [
 ]
 
 class TodoForm extends React.Component {
-	tokenColorChange: any
+	tokenColorChange: any;
+	tokenItemEvent: any
 
 	state = {
 		value: "",
@@ -43,6 +44,7 @@ class TodoForm extends React.Component {
 
 	componentDidMount() {
 		this.tokenColorChange = PubSub.subscribe(TOPIC_COLOR_CHANGE, this.onColorChange);
+		this.tokenItemEvent = PubSub.subscribe(TOPIC_ITEM_EVENT, this.onItemEvent);
 	}
 
 	componentWillUnmount() {
@@ -51,6 +53,9 @@ class TodoForm extends React.Component {
 
 	onColorChange = (topic: string, event: ColorItemEvent) => {
 		this.setState({color: event.color})
+	}
+	onItemEvent = () => {
+		this.setState({showColor: false})
 	}
 
 	toggleColor = () => {

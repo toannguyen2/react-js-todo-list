@@ -39,6 +39,7 @@
 }
 
 .todo_form > .container_input > .box > .color_btn > .color-container {
+	z-index: 10;
 	position: absolute;
 	width: 274px;
 	height: 60px;
